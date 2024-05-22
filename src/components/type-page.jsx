@@ -76,7 +76,6 @@ export default function Type() {
 
   const book_update = (bookPath) => {
     load_book(bookPath).then((book) => {
-      console.log(book);
       setBookName(book.bookName);
       setBook(book.bookContents);
       page_maker(book.bookContents[0]);
