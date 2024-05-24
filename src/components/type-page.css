@@ -31,9 +31,18 @@
   display: inline-block;
   cursor: pointer;
   padding: 0px 4px 0px 4px;
-  color: var(--overlay-color);
   display: flex;
   align-items: center;
+}
+
+.book-select span {
+  font-weight: 500;
+  color: var(--overlay-color);
+}
+
+.book-select label span {
+  width: 100%;
+  text-align: center;
 }
 
 .book-select select {

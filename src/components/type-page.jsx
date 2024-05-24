@@ -194,10 +194,9 @@ export default function Type() {
   return (
     <div className='type'>
       <div className='type-bar'>
+        {/* prettier-ignore */}
         <div className='book-select'>
-          <label htmlFor='book-upload'>
-            <span>{bookName}</span>
-          </label>
+          <label htmlFor='book-upload'><span>{bookName}</span></label>
           <input
             id='book-upload'
             type='file'
@@ -207,9 +206,7 @@ export default function Type() {
           <span>
             Chapter:
             <select name='chapter' onChange={(e) => chapter_update(e)}>
-              <option value='' disabled selected hidden>
-                0
-              </option>
+              <option value='' disabled selected hidden>0</option>
               {book.map((chapter, index) => {
                 return <option value={index}>{index + 1}</option>;
               })}
@@ -218,10 +215,7 @@ export default function Type() {
           <span>
             Page:
             <select name='page' onChange={(e) => page_update(e)}>
-              <option value='' disabled selected hidden>
-                0
-              </option>
-
+              <option value='' disabled selected hidden>0</option>
               {pages.map((page, index) => {
                 return <option value={index}>{index + 1}</option>;
               })}

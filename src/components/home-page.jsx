@@ -25,7 +25,7 @@ export default function Home() {
         <br />
         {/* <u>Instuctions,</u> */}
         <u>
-          <strong>⚠️ and underlined words means under development</strong>
+          <strong>(⚠️ and underlined words means under development)</strong>
         </u>
         {/* prettier-ignore */}
         <ul>
