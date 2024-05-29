@@ -75,7 +75,11 @@ export default function Type() {
   let textArr = filteredText.split('');
 
   const book_update = (bookPath) => {
+    // bookPath =
+    //   'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/frankenstein-or-the-modern-prometheus-by-mary-wollstonecraft-shelley.epub';
     load_book(bookPath).then((book) => {
+      console.log(book);
+      console.log(book.bookContents);
       setBookName(book.bookName);
       setBook(book.bookContents);
       page_maker(book.bookContents[0]);
@@ -89,6 +93,9 @@ export default function Type() {
   };
 
   const page_maker = (content) => {
+    if (content == '') {
+      content = '<Empty. Please change chapter>';
+    }
     let splitString = [];
     let count = 0;
     let prevIndex = 0;
