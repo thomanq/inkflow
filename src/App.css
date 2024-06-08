@@ -6,9 +6,10 @@
   --darker-background-color: #181825;
   --background-color: #1e1e2e;
   --font-color: #cdd6f4;
-  --font-color2: #313244;
-  --overlay-color: #6c7086;
+  --font-color2: #45475a;
+  --overlay-color: #7f849c;
   --accent-color: #cba6f7;
+  --secondary-accent-color: #f2cdcd;
   --wrong-color: #f38ba8;
   --wrong-background: #f38ba860;
   --type-font-size: 16px;
@@ -54,6 +55,11 @@ hr {
   border: 0;
 }
 
+.material-symbols-outlined {
+  font-size: 24px;
+  color: var(--accent-color);
+}
+
 .app {
   max-width: 1000px;
   height: 95vh;
@@ -92,11 +98,6 @@ hr {
   font-weight: bold;
 }
 
-.material-symbols-outlined {
-  font-size: 24px;
-  color: var(--accent-color);
-}
-
 .pages {
   margin: 0 auto;
   display: flex;
@@ -106,6 +107,10 @@ hr {
 }
 
 @media screen and (max-width: 950px) {
+  * {
+    font-size: 13px;
+  }
+
   .app {
     width: 800px;
   }

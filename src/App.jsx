@@ -27,7 +27,7 @@ function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  if (windowWidth < 800 || windowHeight < 550) {
+  if (windowWidth < 800 || windowHeight < 640) {
     alert('Window is too small. Please use a larger screen.');
     return null;
   }
@@ -40,10 +40,6 @@ function App() {
           <a href='/'><img src={inkflow} /></a>
           {/* prettier-ignore */}
           <div className='nav-buttons'>
-            {/* <button onClick={() => refresh()}><img src={refreshIcon} /></button>
-            <button onClick={() => setPage('home')}><img src={homeIcon} /></button>
-            <button onClick={() => setPage('type')}><img src={typeIcon} /></button>
-            <button onClick={() => setPage('user')}><img src={userIcon} /></button> */}
             <button onClick={() => setPage('home')}><i class="material-symbols-outlined">home</i></button>
             <button onClick={() => refresh()}><i class="material-symbols-outlined">refresh</i></button>
             <button onClick={() => setPage('type')}><i class="material-symbols-outlined">keyboard</i></button>

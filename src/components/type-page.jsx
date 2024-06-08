@@ -2,32 +2,57 @@ import { useEffect, useRef, useState } from 'react';
 import Epub from 'epubjs';
 import './type-page.css';
 
-const bookURLMap = {
-  1: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/alices-adventures-in-wonderland-by-lewis-carroll.epub',
-  2: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/don-quijote-de-la-mancha-by-miguel-de-cervantes-saavedra.epub',
-  3: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/dracula-by-bram-stoker.epub',
-  4: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/frankenstein-or-the-modern-prometheus-by-mary-wollstonecraft-shelley.epub',
-  5: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/gullivers-travels-into-several-remote-nations-of-the-world-by-jonathan-swift.epub',
-  6: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/hamlet-prince-of-denmark-by-william-shakespeare.epub',
-  7: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/incidents-in-the-life-of-a-slave-girl-written-by-herself-by-harriet-a-jacobs.epub',
-  8: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/metamorphosis-by-franz-kafka.epub',
-  9: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/moby-dick-or-the-whale-by-herman-melville.epub',
-  10: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/oliver-twist-by-charles-dickens.epub',
-  11: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/pride-and-prejudice-by-jane-austen.epub',
-  12: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/romeo-and-juliet-by-william-shakespeare.epub',
-  13: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-adventures-of-sherlock-holmes-by-arthur-conan-doyle.epub',
-  14: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-adventures-of-tom-sawyer-complete-by-mark-twain.epub',
-  15: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-art-of-war-by-active-6th-century-bsunzi.epub',
-  16: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-complete-works-of-william-shakespeare-by-william-shakespeare.epub',
-  17: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-count-of-monte-cristo-by-alexandre-dumas-and-auguste-maquet.epub',
-  18: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-great-gatsby-by-fscott-fitzgerald.epub',
-  19: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-jungle-book-by-rudyard-kipling.epub',
-  20: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-odyssey-by-homer.epub',
-  21: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-social-cancer-a-complete-english-version-of-noli-me-tangere-by-josé-rizal.epub',
-  22: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-strange-case-of-dr-jekyll-and-mr-hyde-by-robert-louis-stevenson.epub',
-  23: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-thousand-and-one-nights-vol-i-by-lane-lane-poole-poole-and-harvey.epub',
-  24: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/through-the-looking-glass-by-lewis-carroll.epub',
-  25: 'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/winnie-the-pooh-by-a-a-milne.epub',
+const libraryMap = {
+  "Alice's adventures in wonderland":
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/alices-adventures-in-wonderland-by-lewis-carroll.epub',
+  'Don quijote':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/don-quijote-by-miguel-de-cervantes-saavedra.epub',
+  Dracula:
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/dracula-by-bram-stoker.epub',
+  'Frankenstein; or, the Modern Prometheus':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/frankenstein-or-the-modern-prometheus-by-mary-wollstonecraft-shelley.epub',
+  "Gulliver's travel into the several remote nations of the world":
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/gullivers-travels-into-several-remote-nations-of-the-world-by-jonathan-swift.epub',
+  'Hamlet prince':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/hamlet-prince-of-denmark-by-william-shakespeare.epub',
+  'Incidents in the life of a slave girl':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/incidents-in-the-life-of-a-slave-girl-written-by-herself-by-harriet-a-jacobs.epub',
+  Metamorphosis:
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/metamorphosis-by-franz-kafka.epub',
+  'Moby dick':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/moby-dick-or-the-whale-by-herman-melville.epub',
+  'Oliver Twist':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/oliver-twist-by-charles-dickens.epub',
+  'Pride and prejudice':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/pride-and-prejudice-by-jane-austen.epub',
+  'Romeo and juliet':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/romeo-and-juliet-by-william-shakespeare.epub',
+  'The adventures of sherlock holmes':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-adventures-of-sherlock-holmes-by-arthur-conan-doyle.epub',
+  'The adventures of Tom Sawyer':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-adventures-of-tom-sawyer-complete-by-mark-twain.epub',
+  'The art of war':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-art-of-war-by-active-6th-century-bsunzi.epub',
+  'The complete works of william shakespeare':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-complete-works-of-william-shakespeare-by-william-shakespeare.epub',
+  'The count of Monte Cristo':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-count-of-monte-cristo-by-alexandre-dumas-and-auguste-maquet.epub',
+  'The great gatsby':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-great-gatsby-by-fscott-fitzgerald.epub',
+  'The jungle book':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-jungle-book-by-rudyard-kipling.epub',
+  'The odyssey':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-odyssey-by-homer.epub',
+  'The social cancer':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-social-cancer-a-complete-english-version-of-noli-me-tangere-by-josé-rizal.epub',
+  'The strange case of Dr Jekyll and Mr Hyde':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-strange-case-of-dr-jekyll-and-mr-hyde-by-robert-louis-stevenson.epub',
+  'The thousand and one nights':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/the-thousand-and-one-nights-vol-i-by-lane-lane-poole-poole-and-harvey.epub',
+  'Through the looking glass':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/through-the-looking-glass-by-lewis-carroll.epub',
+  'Winnie the pooh':
+    'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/winnie-the-pooh-by-a-a-milne.epub',
 };
 
 const neg_to_zero = (num) => {
@@ -75,11 +100,10 @@ const load_book = (bookPath) => {
 };
 
 export default function Type() {
-  const [bookName, setBookName] = useState('Upload book here');
+  const [bookName, setBookName] = useState('Upload book here or select from here =>');
   const [book, setBook] = useState([]); //                Contains all the chapters
   const [text, setText] = useState(''); //                Contains the text inside a chapter
-  const [chapterCount, setChapterCount] = useState(0); // Counts chapters
-  // const [chapter, setChapter] = useState(''); //       Current chapter's content
+  // const [chapterCount, setChapterCount] = useState(0); // Counts chapters
   const [pages, setPages] = useState([]); //              Contains 200 words pages
   const [pageNum, setPageNum] = useState(0);
   const [wordCount, setWordCount] = useState(0); //       Counts words
@@ -103,26 +127,22 @@ export default function Type() {
   let textArr = filteredText.split('');
 
   const load_library_book = (e) => {
-    let bookURL = bookURLMap[e.target.value];
+    let bookURL = libraryMap[e.target.value];
     book_update(bookURL);
   };
 
   const book_update = (bookPath) => {
-    // bookPath =
-    //   'https://cdn.jsdelivr.net/gh/doctorthe113/inkflow/sample-books/frankenstein-or-the-modern-prometheus-by-mary-wollstonecraft-shelley.epub';
     load_book(bookPath).then((book) => {
-      console.log(book);
-      console.log(book.bookContents);
       setBookName(book.bookName);
       setBook(book.bookContents);
       page_maker(book.bookContents[0]);
-      setChapterCount(book.bookContents.length);
+      // setChapterCount(book.bookContents.length);
     });
   };
 
   const chapter_update = (e) => {
-    setChapterCount(e.target.value);
     page_maker(book[e.target.value]);
+    // setChapterCount(e.target.value);
   };
 
   const page_maker = (content) => {
@@ -134,11 +154,11 @@ export default function Type() {
     let prevIndex = 0;
     Array.from(content).forEach((element, index) => {
       if (element == ' ' && count >= 99) {
-        splitString.push(content.slice(prevIndex, index));
+        splitString.push(content.slice(prevIndex, index).trim());
         count = 0;
         prevIndex = index + 1;
       } else if (content.length == index + 1) {
-        splitString.push(content.slice(prevIndex, index + 1));
+        splitString.push(content.slice(prevIndex, index + 1).trim());
       } else if (element == ' ') {
         count++;
       }
@@ -235,7 +255,7 @@ export default function Type() {
     <div className='type'>
       <div className='type-bar'>
         {/* prettier-ignore */}
-        <div className='book-select'>
+        <div className='select'>
           <label className='book-selecter' htmlFor='book-upload'><span>{bookName}</span></label>
           <input
             id='book-upload'
@@ -243,50 +263,29 @@ export default function Type() {
             accept='.epub, .opf'
             onChange={(e) => book_update(e.target.files[0])}
           />
-          <select className='book-selecter' onChange={(e) => load_library_book(e)}>
-            <option value='' disabled selected hidden>or, choose a book from the library</option>
-            <option value='1'>Alice's adventures in wonderland</option>
-            <option value='2'>Don quijote</option>
-            <option value='3'>Dracula</option>
-            <option value='4'>Frankenstein; or, the Modern Prometheus</option>
-            <option value='5'>Gulliver's travel into the several remote nations of the world</option>
-            <option value="6">Hamlet prince</option>
-            <option value="7">Incidents in the life of a slave girl</option>
-            <option value="8">Metamorphosis</option>
-            <option value="9">Moby Dick</option>
-            <option value="10">Oliver Twist</option>
-            <option value="11">Pride and prejudice</option>
-            <option value="12">Romeo and Juliet</option>
-            <option value="13">The adventures of Sherlock Holmes</option>
-            <option value="14">The adventures of Tom Sawyer</option>
-            <option value="15">The art of war</option>
-            <option value="16">The complete works of William Shakespeare</option>
-            <option value="17">The count of Monte Cristo</option>
-            <option value="18">The great Gatsby</option>
-            <option value="19">The jungle book</option>
-            <option value="20">The odyssey</option>
-            <option value="21">The social cancer \(English version\)</option>
-            <option value="22">The strange case of Dr, Jekyll and Mr, Hyde</option>
-            <option value="23">The thousand and one nights</option>
-            <option value="24">Through the looking glass</option>
-            <option value="25">Winnie the pooh</option>
-          </select>
-          <div className='chapter-page-selecter'>
-            Chapter:
-            <select className='chapter-page-select' onChange={(e) => chapter_update(e)}>
+          <div className='book-selecter' id='lib-select-container'>
+            <i className='material-symbols-outlined' id='lib-select-bg'>book_2</i>
+            <select id="lib-selecter" onChange={(e) => load_library_book(e)}>
+              <option value='' disabled selected hidden>or, choose a book from the library</option>
+              {Object.keys(libraryMap).map((key) => {
+                return <option value={key}>{key}</option>;
+              })}
+            </select>
+          </div>
+            <span>Chapter:</span>
+            <select className='chapter-page-selecter' onChange={(e) => chapter_update(e)}>
               <option value='' disabled selected hidden>0</option>
               {book.map((chapter, index) => {
                 return <option value={index}>{index + 1}</option>;
               })}
             </select>
-            Page:
-            <select className='chapter-page-select' onChange={(e) => page_update(e)}>
+            <span>Page:</span>
+            <select className='chapter-page-selecter' onChange={(e) => page_update(e)}>
               <option value='' disabled selected hidden>0</option>
               {pages.map((page, index) => {
                 return <option value={index}>{index + 1}</option>;
               })}
             </select>
-          </div>
         </div>
         <hr />
         <div className='stats'>
