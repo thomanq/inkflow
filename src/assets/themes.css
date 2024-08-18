@@ -1,0 +1,79 @@
+.catppuccin-mocha {
+    --body-color: #181825;
+    --background-color: #1e1e2e;
+    --shadow-color: #11111b;
+    --nav-color: #181825;
+    --navbutton-bg: #1e1e2e;
+    --navbutton-color: #cba6f7;
+    --accent-color: #cba6f7;
+    --secondary-accent: #f2cdcd;
+    --font-color: #cdd6f4;
+    --type-color: #cdd6f4;
+    --nontype-color: #45475a;
+    --typebox-border: #cdd6f4;
+    --stats-color: #7f849c;
+    --selection-color: #cba6f7;
+    --selection-border: #cba6f7;
+    --wrong-color: #f38ba8;
+    --wrong-highlight: #f38ba860;
+}
+
+.retro-80s {
+    --body-color: #101124;
+    --background-color: #1b1d36;
+    --shadow-color: #11111b;
+    --nav-color: #101124;
+    --navbutton-bg: #1e1e2e;
+    --navbutton-color: #cba6f7;
+    --accent-color: #fca6d1;
+    --secondary-accent: #f2cdcd;
+    --font-color: #fca6d1;
+    --type-color: #fca6d1;
+    --nontype-color: #7a5266;
+    --typebox-border: #fca6d1;
+    --stats-color: #f2cdcd;
+    --selection-color: #99d6ea;
+    --selection-border: #99d6ea;
+    --wrong-color: #f38ba8;
+    --wrong-highlight: #f38ba860;
+}
+
+.coffee {
+    --body-color: #f7ce91;
+    --background-color: #ffe4bc;
+    --shadow-color: #e8b872;
+    --nav-color: #a86948;
+    --navbutton-bg: #ffe4bc;
+    --navbutton-color: #a86948;
+    --accent-color: #814836;
+    --secondary-accent: #814836;
+    --font-color: #a86948;
+    --type-color: #a86948;
+    --nontype-color: #d1a994;
+    --typebox-border: #a86948;
+    --stats-color: #a86948;
+    --selection-color: #a86948;
+    --selection-border: #a86948;
+    --wrong-color: #fe5283;
+    --wrong-highlight: #f38ba860;
+}
+
+.voc {
+    --body-color: #10040f;
+    --background-color: #190618;
+    --shadow-color: #0f050f;
+    --nav-color: #e0caac;
+    --navbutton-bg: #190618;
+    --navbutton-color: #e0caac;
+    --accent-color: #2c0c28;
+    --secondary-accent: #e0caac;
+    --font-color: #eeeae4;
+    --type-color: #e0caac;
+    --nontype-color: #5f3c29;
+    --typebox-border: #eeeae4;
+    --stats-color: #e0caac;
+    --selection-color: #e0caac;
+    --selection-border: #e0caac;
+    --wrong-color: #fe5283;
+    --wrong-highlight: #f38ba860;
+}

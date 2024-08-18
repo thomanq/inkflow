@@ -1,185 +1,196 @@
 * {
-  background-color: transparent;
+    background-color: transparent;
+}
+
+.user-page {
+    width: 100%;
 }
 
 .type-bar hr {
-  height: 1px;
-  background-color: var(--accent-color);
+    height: 1px;
+    background-color: var(--selection-color);
 }
 
 .select {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin: 4px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 4px;
 }
 
 .select span {
-  color: var(--overlay-color);
-  height: max-content;
-  width: max-content;
-  font-weight: 600;
-  color: var(--overlay-color);
+    color: var(--selection-color);
+    height: max-content;
+    width: max-content;
+    font-weight: 600;
 }
 
 .select input[type='file'] {
-  display: none;
+    display: none;
 }
 
 .book-selecter {
-  height: 24px;
-  min-width: 250px;
-  border: var(--accent-color) 2px solid;
-  border-radius: 8px;
-  padding: 0px 6px 0px 6px;
-  display: grid;
-  box-sizing: content-box;
-  place-items: center;
+    height: 24px;
+    min-width: 250px;
+    border: var(--selection-border) 2px solid;
+    border-radius: 8px;
+    padding: 0px 6px 0px 6px;
+    display: grid;
+    box-sizing: content-box;
+    place-items: center;
 }
 
 .book-selecter span {
-  width: 100%;
-  text-align: center;
+    width: 100%;
+    text-align: center;
 }
 
 #lib-select-container {
-  display: grid;
-  min-width: 0px;
-  width: 30px;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  margin: 0px 1px 0px 1px;
-  padding: 1px 0px 1px 0px;
-  margin-right: auto;
+    display: grid;
+    min-width: 0px;
+    width: 30px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    margin: 0px 1px 0px 1px;
+    padding: 1px 0px 1px 0px;
+    margin-right: auto;
 }
 
 #lib-select-bg {
-  width: 100%;
-  text-align: center;
-  font-size: 22px;
-  color: var(--overlay-color);
-  z-index: 0;
-  grid-area: 1/1/2/2;
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+    color: var(--selection-color);
+    z-index: 0;
+    grid-area: 1/1/2/2;
 }
 
 #lib-selecter {
-  grid-area: 1/1/2/2;
-  width: 100%;
-  text-align: center;
-  font-weight: 500;
-  border: 0px;
-  color: transparent;
-  z-index: 1;
-  scrollbar-width: none;
-  appearance: none;
+    grid-area: 1/1/2/2;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    border: 0px;
+    color: transparent;
+    z-index: 1;
+    scrollbar-width: none;
+    appearance: none;
 }
 
 #lib-selecter option {
-  background-color: var(--background-color);
+    color: var(--selection-border);
+    background-color: var(--background-color);
 }
 
 #lib-selecter::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 #lib-selecter:focus {
-  outline: none;
+    outline: none;
 }
 
 .chapter-page-selecter {
-  width: 50px;
-  height: 24px;
-  padding: 0px 4px 0px 4px;
-  margin: 0px 4px 0px 4px;
-  border-radius: 8px;
-  border: var(--accent-color) 2px solid;
-  text-align: right;
-  font-weight: 500;
-  box-sizing: content-box;
-  color: var(--overlay-color);
-  background-color: var(--background-color);
-  scrollbar-width: none;
+    width: 50px;
+    height: 24px;
+    padding: 0px 4px 0px 4px;
+    margin: 0px 4px 0px 4px;
+    border-radius: 8px;
+    border: var(--selection-border) 2px solid;
+    text-align: right;
+    font-weight: 500;
+    box-sizing: content-box;
+    color: var(--selection-color);
+    background-color: var(--background-color);
+    scrollbar-width: none;
+}
+
+.chapter-page-selecter option {
+    color: var(--selection-border);
+    background-color: var(--background-color);
 }
 
 .chapter-page-selecter::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .chapter-page-selecter:focus {
-  outline: none;
+    outline: none;
 }
 
 .stats {
-  display: flex;
-  justify-content: space-between;
-  padding: 0px 50px 0px 50px;
-  margin: 12px 0 4px 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 50px 0px 50px;
+    margin: 12px 0 4px 0;
 }
 
 .stats-span {
-  font-family: 'Montserrat';
-  font-size: 14px;
-  font-weight: 900;
-  width: 150px;
-  color: var(--overlay-color);
+    font-family: 'Montserrat';
+    font-size: 14px;
+    font-weight: 900;
+    width: 150px;
+    color: var(--stats-color);
 }
 
 .type-area {
-  margin: 4px 0px 4px 0px;
-  width: 800px;
-  padding: 10px;
-  display: grid;
-  place-content: center;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  border: 2px dashed var(--accent-color);
-  border-radius: 12px;
+    margin: 4px 0px 4px 0px;
+    width: 800px;
+    padding: 10px;
+    display: grid;
+    place-content: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    border: 2px dashed var(--typebox-border);
+    border-radius: 12px;
 }
 
 .letters,
 .typebox {
-  grid-area: 1 / 1 / 1 / 1;
-  font-size: var(--type-font-size);
+    grid-area: 1 / 1 / 1 / 1;
+    font-size: var(--type-font-size);
 }
 
 .letters {
-  z-index: 0;
+    z-index: 0;
 }
 
 .letter {
-  color: var(--font-color2);
-  font-family: var(--type-font-family);
-  border: 1px solid transparent;
+    color: var(--nontype-color);
+    font-family: var(--type-font-family);
+    border: 1px solid transparent;
 }
 
 .typebox {
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  background-color: transparent;
-  border: 0;
-  text-decoration: none;
-  color: transparent;
-  resize: none;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: transparent;
+    border: 0;
+    text-decoration: none;
+    color: transparent;
+    resize: none;
 }
 
 .typebox:focus {
-  outline: none;
+    outline: none;
 }
 
 .page-num-show {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 2px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 2px;
 }
 
 .page-num-show span {
-  font-weight: 900;
+    font-weight: 900;
+    color: var(--typebox-border);
 }
 
 .page-num-show hr {
-  width: 300px;
+    width: 300px;
+    background-color: var(--typebox-border);
 }
 
 /* @keyframes cursorFade {
