@@ -128,18 +128,8 @@ export default function Type() {
     let timeRef = useRef(time);
     let timerRef = useRef(timer);
 
-    // filteres the text and checks if the caseCheck and puncutation is enabled
-    // and makes an array of characters based on that
-    let filteredText;
-    if (!caseCheck) {
-        filteredText = text.replace(/[“”]/g, '"');
-        filteredText = filteredText.toLowerCase();
-    } else {
-        filteredText = text.replace(/[“”]/g, '""');
-    }
-    if (!punctuation) {
-        filteredText = filteredText.replace(/[.,\/#!?$%\^&\*;:{}—=\-_`'’"~()]/g, '');
-    }
+    // filteres the text moree makes an array of characters
+    let filteredText = text.replace(/[“”]/g, '"');
     let textArr = filteredText.split('');
 
     // loads the library book
@@ -184,29 +174,27 @@ export default function Type() {
         setPages(splitString);
         setPageNum(0);
         // filters the text according to configs
+        let tempText = splitString[0];
         if (!caseCheck) {
-            setText(splitString[0].toLowerCase());
-        } else {
-            setText(splitString[0]);
+            tempText = tempText.toLowerCase();
         }
         if (!punctuation) {
-            setText(splitString[0].replace(/[.,\/#!?$%\^&\*;:{}—=\-_`'’"~()]/g, ''));
+            tempText = tempText.replace(/[.,\/#!?$%\^&\*;:{}—=\-_`'’"~()]/g, '');
         }
+        setText(tempText);
     };
 
     // loads the selected page and filters the text according to configs
     const page_update = (e) => {
         setPageNum(e.target.value);
+        let tempText = pages[e.target.value];
         if (!caseCheck) {
-            setText(pages[e.target.value].toLowerCase());
-        } else {
-            setText(pages[e.target.value]);
+            tempText = tempText.toLowerCase();
         }
         if (!punctuation) {
-            setText(
-                pages[e.target.value].replace(/[.,\/#!?$%\^&\*;:{}—=\-_`'’"~()]/g, '')
-            );
+            tempText = tempText.replace(/[.,\/#!?$%\^&\*;:{}—=\-_`'’"~()]/g, '');
         }
+        setText(tempText);
     };
 
     // type update
