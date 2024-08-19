@@ -23,15 +23,15 @@ export default function Home() {
                 <br />
                 <br />
                 {/* <u>Instuctions,</u> */}
-                <u>
+                {/* <u>
                     <strong>(⚠️ and underlined words means under development)</strong>
-                </u>
+                </u> */}
                 {/* prettier-ignore */}
                 <ul>
-            <li>Default theme is catppuccin which can be <u>changed</u> in the user menu.</li>
-            <li>Default typing font is 'Space Mono' from Google Fonts. Which can be <u>changed</u>.</li>
+            <li>Default theme is catppuccin which can be changed in the user menu. Post theme suggestions on discord or github issues.</li>
+            <li>Default typing font is 'Space Mono' from Google Fonts.</li>
             <li>To add new books, you need to give .epub file.</li>
-            <li>To save progress, you will have to login. But that wouldn't save the books on the cloud tho. They are saved locally. ⚠️</li>
+            <li>Progress are not saved in the cloud because I am poor for cloud.</li>
         </ul>
             </p>
         </div>
