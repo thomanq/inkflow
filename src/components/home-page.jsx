@@ -12,7 +12,9 @@ export default function Home() {
                 </a>{' '}
                 I made it to practice react and I wanted to import my own books. Let me
                 know if you liked this or not. Feedbacks are always welcomed :D send
-                feedbacks to me on discord at @doctorthe113.
+                feedbacks to me on discord at @doctorthe113. This is made for big
+                screens such as desktops and laptops. But mobile users can use it using
+                the "desktop site" mode enabled in the browser.
             </p>
             <p className='text'>
                 <div className='centered'>
