@@ -128,7 +128,7 @@ export default function Type() {
     let timeRef = useRef(time);
     let timerRef = useRef(timer);
 
-    // filteres the text moree makes an array of characters
+    // filteres the text more makes an array of characters
     let filteredText = text.replace(/[“”]/g, '"');
     let textArr = filteredText.split('');
 
@@ -179,7 +179,7 @@ export default function Type() {
             tempText = tempText.toLowerCase();
         }
         if (!punctuation) {
-            tempText = tempText.replace(/[.,\/#!?$%\^&\*;:{}—=\-_`'’"~()]/g, '');
+            tempText = tempText.replace(/[.,\/#!?$%\^&\*;:{}—=\-_`'’"“”~()]/g, '');
         }
         setText(tempText);
     };

@@ -31,7 +31,7 @@ export default function Home() {
                 {/* prettier-ignore */}
                 <ul>
             <li>Default theme is catppuccin which can be changed in the user menu. Post theme suggestions on discord or github issues.</li>
-            <li>Default typing font is 'Space Mono' from Google Fonts.</li>
+            <li>Default typing font is 'Landex' from Google Fonts. This is done to help with dyslexia and trouble reading texts. Feedbacks are appreciated regarding this!</li>
             <li>To add new books, you need to give .epub file.</li>
             <li>Progress are not saved in the cloud because I am poor for cloud.</li>
         </ul>

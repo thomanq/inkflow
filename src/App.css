@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
 
 :root {
     --type-font-size: 16px;
-    --type-font-family: 'Space Mono';
+    --type-font-family: 'Lexend';
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Montserrat';
+    font-family: 'Lexend';
     font-weight: 200;
     font-size: 15px;
     color: var(--font-color);
