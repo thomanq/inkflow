@@ -89,7 +89,7 @@ const load_book = (bookPath) => {
                             })
                             .join('\n');
                         bookContent.push(allText);
-                    })
+                    }),
                 );
             });
             Promise.all(promises)
@@ -154,45 +154,64 @@ export default function Type() {
 
     // loads the selected page
     const page_maker = (content) => {
+        clearpageState();
         if (content == '') {
             content = '<Empty. Please change chapter>';
         }
-        let splitString = [];
+        for (const [key, value] of Object.entries({ '’': "'", '“': '"', '”': '"' })) {
+            content = content.replaceAll(key, value);
+        }
+        let pages = [];
         let count = 0;
         let prevIndex = 0;
         Array.from(content).forEach((element, index) => {
             if (element == ' ' && count >= 99) {
-                splitString.push(content.slice(prevIndex, index).trim());
+                pages.push(content.slice(prevIndex, index).trim());
                 count = 0;
                 prevIndex = index + 1;
             } else if (content.length == index + 1) {
-                splitString.push(content.slice(prevIndex, index + 1).trim());
+                pages.push(content.slice(prevIndex, index + 1).trim());
             } else if (element == ' ') {
                 count++;
             }
         });
-        setPages(splitString);
+        setPages(pages);
         setPageNum(0);
         // filters the text according to configs
-        let tempText = splitString[0];
+        let tempText = pages[0];
         if (!caseCheck) {
             tempText = tempText.toLowerCase();
         }
         if (!punctuation) {
-            tempText = tempText.replace(/[.,\/#!?$%\^&\*;:{}—=\-_`'’"“”~()]/g, '');
+            tempText = tempText.replace(/[.,\/#!?$%\^&\*;:{}—=\-_`'"~()]/g, '');
         }
         setText(tempText);
     };
 
+    const clearpageState = () => {
+        let charAll = document.getElementsByClassName('letter');
+        Array.from(charAll).forEach((element) => {
+            element.removeAttribute('style');
+        });
+        let typebox = document.getElementById('typebox');
+        typebox.value = '';
+    };
+
     // loads the selected page and filters the text according to configs
     const page_update = (e) => {
-        setPageNum(e.target.value);
+        clearpageState();
+        setPageNum(parseInt(e.target.value, 10));
         let tempText = pages[e.target.value];
+
+        for (const [key, value] of Object.entries({ '’': "'", '“': '"', '”': '"' })) {
+            tempText = tempText.replaceAll(key, value);
+        }
+
         if (!caseCheck) {
             tempText = tempText.toLowerCase();
         }
         if (!punctuation) {
-            tempText = tempText.replace(/[.,\/#!?$%\^&\*;:{}—=\-_`'’"~()]/g, '');
+            tempText = tempText.replace(/[.,\/#!?$%\^&\*;:{}—=\-_`'"~()]/g, '');
         }
         setText(tempText);
     };
@@ -208,7 +227,7 @@ export default function Type() {
 
         try {
             let char = document.getElementById(
-                'char' + neg_to_zero(inputText.length - 1)
+                'char' + neg_to_zero(inputText.length - 1),
             );
             let charNext = document.getElementById('char' + inputText.length);
 
@@ -231,7 +250,7 @@ export default function Type() {
 
         // counts accuracy
         setAccuracy(
-            `${(((text.length - errCount) / text.length) * 100).toPrecision(3)}%`
+            `${(((text.length - errCount) / text.length) * 100).toPrecision(3)}%`,
         );
 
         // word and wpm counter
@@ -245,14 +264,11 @@ export default function Type() {
             setText(
                 typeof pages[pageNum + 1] == 'string'
                     ? pages[pageNum + 1]
-                    : 'End of chapter reached'
+                    : 'End of chapter reached',
             );
             setPageNum(pageNum + 1);
             e.target.value = '';
-            Array.from(charAll).forEach((element) => {
-                element.style.color = 'var(--font-color2)';
-                element.style.backgroundColor = 'transparent';
-            });
+            clearpageState();
         }
     };
 
@@ -335,6 +351,7 @@ export default function Type() {
           })}
         </div>
                 <textarea
+                    id='typebox'
                     className='typebox'
                     spellCheck='false'
                     onChange={type_update}
