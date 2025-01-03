@@ -158,9 +158,6 @@ export default function Type() {
         if (content == '') {
             content = '<Empty. Please change chapter>';
         }
-        for (const [key, value] of Object.entries({ '’': "'", '“': '"', '”': '"' })) {
-            content = content.replaceAll(key, value);
-        }
         let pages = [];
         let count = 0;
         let prevIndex = 0;
@@ -188,6 +185,15 @@ export default function Type() {
         setText(tempText);
     };
 
+    const simplify = (char) => {
+        return {
+            '’': "'",
+            '“': '"',
+            '”': '"',
+            '—': '-',
+        }[char] || char;
+    };
+
     const clearpageState = () => {
         let charAll = document.getElementsByClassName('letter');
         Array.from(charAll).forEach((element) => {
@@ -202,10 +208,6 @@ export default function Type() {
         clearpageState();
         setPageNum(parseInt(e.target.value, 10));
         let tempText = pages[e.target.value];
-
-        for (const [key, value] of Object.entries({ '’': "'", '“': '"', '”': '"' })) {
-            tempText = tempText.replaceAll(key, value);
-        }
 
         if (!caseCheck) {
             tempText = tempText.toLowerCase();
@@ -232,7 +234,7 @@ export default function Type() {
             let charNext = document.getElementById('char' + inputText.length);
 
             // check if typed letter is same as letter on screen
-            if (inputText.slice(-1) == text[inputText.length - 1]) {
+            if (inputText.slice(-1) == simplify(text[inputText.length - 1])) {
                 char.style.color = typeColor;
                 char.style.backgroundColor = '';
             } else {
