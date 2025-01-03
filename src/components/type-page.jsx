@@ -282,14 +282,14 @@ export default function Type() {
     useEffect(() => {
         if (isTyping) {
             interval = setInterval(() => {
-                setTime((prevTime) => prevTime + 10);
-                setTimer((prevTimer) => prevTimer + 10);
+                setTime((prevTime) => prevTime + 100);
+                setTimer((prevTimer) => prevTimer + 100);
                 if (timerRef.current >= 5000) {
                     alert('>5s have passed. Timer has been paused');
                     setIsTyping(false);
                     setTimer(0);
                 }
-            }, 10);
+            }, 100);
         } else {
             clearInterval(interval);
         }
